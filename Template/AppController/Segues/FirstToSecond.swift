@@ -8,7 +8,8 @@ import Foundation
     let destinationState = AppControllerStateSecond()
     destinationState.viewController = self.visualSegue.destinationViewController
     self.destinationSceneController = destinationState
-    //Transfer any data between AppControllerStates and ViewControllers here
+    
     super.perform()
+    //Transfer any data between AppControllerStates and ViewControllers here
     }
   }
