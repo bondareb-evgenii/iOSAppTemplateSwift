@@ -12,14 +12,16 @@ import UIKit
   optional func applicationWillTerminate(application: UIApplication)
   }
 
-@objc class AppControllerState: EquatableBase, AppControllerStateProtocol
+@objc class AppControllerState: NSObject, EquatablePolymorphic, AppControllerStateProtocol
   {
   var viewController: UIViewController!
   
-  override func isEqualTo(other: EquatableBase) -> Bool
+  func isEqualTo(other: AppControllerState) -> Bool
     {
-    let otherDynamic = other as! AppControllerState
-    return  super.isEqualTo(other) &&
-            self.viewController == otherDynamic.viewController
+    if self.dynamicType != other.dynamicType
+      {
+      return false;
+      }
+    return  self.viewController == other.viewController
     }
   }
